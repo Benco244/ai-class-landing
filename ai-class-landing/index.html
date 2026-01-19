@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn what AI can actually do and how people are turning these skills into income. A practical, no-jargon class with Bernard Opara.">
+    <meta name="keywords" content="AI class, AI training Nigeria, AI fundamentals, learn AI, AI for beginners">
+    <meta name="author" content="Bernard Opara">
+    <title>What AI Can Actually Do - AI Fundamentals Class by Bernard Opara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --electric-cyan: #00f0ff;
+            --neon-purple: #b026ff;
+            --deep-purple: #1a0033;
+            --darker-purple: #0d001a;
+            --neural-blue: #4d7cfe;
+            --grid-green: #00ff88;
+            --warning-amber: #ffb627;
+            --bg-dark: #08070e;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--bg-dark);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* Neural Network Background */
+        .neural-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--deep-purple) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, var(--darker-purple) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-dark) 0%, #000000 100%);
+            z-index: 0;
+        }
+
+        .neural-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--glass-border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Floating orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--electric-cyan);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--neon-purple);
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--neural-blue);
+            top: 50%;
+            left: 50%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-50px, 50px) scale(0.9); }
+        }
+
+        /* Content Container */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .container-narrow {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Glass Morphism */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .hero-content {
+            animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes heroReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(48px, 10vw, 120px);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 32px;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, var(--electric-cyan) 50%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 8s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero .subheadline {
+            font-size: clamp(20px, 3vw, 32px);
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 24px;
+            max-width: 900px;
+            font-weight: 300;
+        }
+
+        .hero .supporting {
+            font-size: 20px;
+            color: var(--electric-cyan);
+            margin-bottom: 48px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 16px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--electric-cyan) 0%, var(--neural-blue) 100%);
+            color: #000000;
+            padding: 24px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 20px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
+            box-shadow: 
+                0 0 40px rgba(0, 240, 255, 0.6),
+                0 20px 60px rgba(0, 240, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 
+                0 0 60px rgba(0, 240, 255, 0.8),
+                0 30px 80px rgba(0, 240, 255, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 700;
+            margin-bottom: 60px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, var(--electric-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-intro {
+            font-size: 22px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 48px;
+        }
+
+        /* Flyer Section - NEW */
+        .flyer-section {
+            background: linear-gradient(180deg, transparent 0%, var(--deep-purple) 50%, transparent 100%);
+            padding: 80px 0;
+        }
+
+        .flyer-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 2px solid var(--glass-border);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 240, 255, 0.3);
+            transition: transform 0.5s ease;
+        }
+
+        .flyer-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 60px 120px rgba(0, 240, 255, 0.4);
+        }
+
+        .flyer-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Why Section */
+        .why-section {
+            background: linear-gradient(180deg, transparent 0%, var(--deep-purple) 100%);
+        }
+
+        .why-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .why-list li {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 32px;
+            font-size: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-list li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--electric-cyan) 0%, var(--neon-purple) 100%);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .why-list li:hover {
+            transform: translateX(12px);
+            border-color: var(--electric-cyan);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
+        }
+
+        .why-list li:hover::before {
+            transform: scaleY(1);
+        }
+
+        .callout {
+            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(176, 38, 255, 0.1) 100%);
+            backdrop-filter: blur(30px);
+            border: 2px solid var(--neon-purple);
+            padding: 48px;
+            margin: 60px 0;
+            border-radius: 24px;
+            font-size: 20px;
+            line-height: 1.8;
+            box-shadow: 
+                0 0 60px rgba(176, 38, 255, 0.3),
+                inset 0 0 60px rgba(176, 38, 255, 0.1);
+            position: relative;
+        }
+
+        .callout::before {
+            content: '⚡';
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 48px;
+            opacity: 0.3;
+        }
+
+        /* Who Section */
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .who-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .who-item::before {
+            content: '✓';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--grid-green);
+            font-weight: 700;
+            font-size: 32px;
+            opacity: 0;
+            transform: scale(0) rotate(-45deg);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .who-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--grid-green);
+            box-shadow: 0 30px 80px rgba(0, 255, 136, 0.3);
+            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(0, 255, 136, 0.05) 100%);
+        }
+
+        .who-item:hover::before {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* Learn Section */
+        .learn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .learn-card {
+            background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(77, 124, 254, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            padding: 48px;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .learn-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--electric-cyan), var(--neural-blue), var(--neon-purple));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .learn-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 40px 100px rgba(77, 124, 254, 0.4);
+        }
+
+        .learn-card:hover::after {
+            opacity: 1;
+        }
+
+        .learn-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--electric-cyan);
+        }
+
+        .learn-card ul {
+            list-style: none;
+            margin: 24px 0;
+        }
+
+        .learn-card li {
+            padding: 16px 0;
+            padding-left: 40px;
+            position: relative;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+        }
+
+        .learn-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 8px;
+            color: var(--neural-blue);
+            font-size: 24px;
+        }
+
+        /* Earning Section */
+        .earning-section {
+            background: linear-gradient(180deg, var(--deep-purple) 0%, var(--darker-purple) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .earning-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--electric-cyan) 50%, transparent 100%);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .earning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .earning-card {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .earning-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--electric-cyan), var(--grid-green));
+            border-radius: 20px 20px 0 0;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .earning-card:hover {
+            transform: scale(1.05);
+            background: rgba(0, 0, 0, 0.6);
+            border-color: var(--neon-purple);
+            box-shadow: 0 30px 80px rgba(176, 38, 255, 0.4);
+        }
+
+        .earning-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .earning-card h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--warning-amber);
+            font-size: 22px;
+        }
+
+        .earning-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Instructor Section */
+        .instructor {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 80px;
+            align-items: start;
+            margin: 60px 0;
+        }
+
+        .instructor-image-wrapper {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 240, 255, 0.4);
+            border: 3px solid var(--glass-border);
+        }
+
+        .instructor-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--electric-cyan) 0%, var(--neural-blue) 50%, var(--neon-purple) 100%);
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .instructor-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+            z-index: 2;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .instructor-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 0;
+        }
+
+        .instructor-bio h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 40px;
+            margin-bottom: 32px;
+            color: var(--electric-cyan);
+        }
+
+        .instructor-bio p {
+            font-size: 18px;
+            line-height: 1.9;
+            margin-bottom: 24px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .instructor-bio ul {
+            list-style: none;
+            margin: 40px 0;
+        }
+
+        .instructor-bio li {
+            padding: 16px 0;
+            padding-left: 48px;
+            position: relative;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .instructor-bio li::before {
+            content: '◆';
+            position: absolute;
+            left: 8px;
+            color: var(--neon-purple);
+            font-size: 20px;
+        }
+
+        /* Format Section */
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .format-item {
+            text-align: center;
+            padding: 48px 32px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            transition: all 0.5s ease;
+        }
+
+        .format-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--grid-green);
+            box-shadow: 0 30px 80px rgba(0, 255, 136, 0.2);
+        }
+
+        .format-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 32px;
+            background: linear-gradient(135deg, var(--neural-blue) 0%, var(--neon-purple) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 20px 60px rgba(77, 124, 254, 0.4);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(77, 124, 254, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 80px rgba(77, 124, 254, 0.6); }
+        }
+
+        .format-item h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: var(--electric-cyan);
+        }
+
+        .format-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            text-align: center;
+            background: linear-gradient(180deg, var(--darker-purple) 0%, var(--bg-dark) 100%);
+            position: relative;
+        }
+
+        .price-box {
+            max-width: 600px;
+            margin: 60px auto;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(176, 38, 255, 0.1) 100%);
+            backdrop-filter: blur(30px);
+            padding: 80px 60px;
+            border-radius: 40px;
+            border: 2px solid var(--electric-cyan);
+            box-shadow: 
+                0 0 100px rgba(0, 240, 255, 0.4),
+                0 40px 100px rgba(0, 240, 255, 0.3),
+                inset 0 0 100px rgba(0, 240, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent 0deg, var(--electric-cyan) 60deg, transparent 120deg);
+            animation: rotate 4s linear infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 96px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--electric-cyan) 0%, var(--grid-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-note {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            font-size: 18px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Final Section */
+        .final-close {
+            text-align: center;
+            padding: 140px 0;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #000000 100%);
+            position: relative;
+        }
+
+        .final-close::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--electric-cyan) 25%, 
+                var(--neon-purple) 50%, 
+                var(--grid-green) 75%, 
+                transparent 100%);
+        }
+
+        .final-close .section-title {
+            margin-bottom: 40px;
+        }
+
+        .final-close p {
+            font-size: 24px;
+            line-height: 1.9;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .final-close .cta-button {
+            margin-top: 60px;
+        }
+
+        /* AI Badge */
+        .ai-badge {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 2px solid var(--electric-cyan);
+            padding: 20px 32px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--electric-cyan);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.4);
+            z-index: 1000;
+            animation: floatBadge 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .ai-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.6);
+        }
+
+        .ai-badge::before {
+            content: '🤖';
+            margin-right: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .instructor {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .instructor-image-wrapper {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .learn-grid,
+            .earning-grid,
+            .format-grid,
+            .why-list,
+            .who-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container,
+            .container-narrow {
+                padding: 0 24px;
+            }
+
+            .price-box {
+                padding: 60px 40px;
+            }
+
+            .price {
+                font-size: 72px;
+            }
+
+            .ai-badge {
+                bottom: 20px;
+                right: 20px;
+                padding: 16px 24px;
+                font-size: 12px;
+            }
+
+            .cta-button {
+                padding: 20px 40px;
+                font-size: 16px;
+            }
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--electric-cyan) 0%, var(--neon-purple) 100%);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--neon-purple) 0%, var(--electric-cyan) 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="neural-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <canvas class="bg-canvas" id="particleCanvas"></canvas>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>What AI Can Actually Do</h1>
+                    <p class="subheadline">A practical, no-jargon class showing where AI fits in real work — and how people are already using it to create value, income, and career leverage.</p>
+                    <p class="supporting">Automation • Vision • Voice • Language • Workflows</p>
+                    <a href="https://selar.com/4yu688861c" class="cta-button" target="_blank" rel="noopener">Reserve Your Spot — ₦10,000</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flyer Section - NEW -->
+        <section class="flyer-section reveal">
+            <div class="container">
+                <div class="flyer-container">
+                    <img src="assets/images/class-flyer.png" alt="What AI Can Actually Do - Class Flyer with Bernard Opara">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Section -->
+        <section class="why-section reveal">
+            <div class="container-narrow">
+                <h2 class="section-title">Why People Are Paying Attention to AI</h2>
+                <p class="section-intro">People aren't interested in AI just because it's exciting. They're interested because it's already being used to:</p>
+                
+                <ul class="why-list">
+                    <li>Save hours of manual work</li>
+                    <li>Create services people pay for</li>
+                    <li>Improve job opportunities</li>
+                    <li>Build tools that solve real problems</li>
+                </ul>
+
+                <div class="callout">
+                    This class is about understanding where those opportunities actually come from — and which ones are realistic for beginners.
+                </div>
+            </div>
+        </section>
+
+        <!-- Who Section -->
+        <section class="who-section reveal">
+            <div class="container-narrow">
+                <h2 class="section-title">This Class Is for You If…</h2>
+                
+                <div class="who-grid">
+                    <div class="who-item">You want to understand AI beyond buzzwords</div>
+                    <div class="who-item">You're curious how people are turning AI skills into income</div>
+                    <div class="who-item">You want practical clarity, not technical overwhelm</div>
+                    <div class="who-item">You're a student, graduate, freelancer, or professional</div>
+                    <div class="who-item">You want skills that are marketable in Nigeria and beyond</div>
+                </div>
+
+                <div class="callout">
+                    This is not a get-rich-quick class. It's a clarity-first foundation for using AI intentionally.
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn Section -->
+        <section class="learn-section reveal">
+            <div class="container">
+                <h2 class="section-title">What You'll Actually Learn</h2>
+                <p class="section-intro">You'll understand:</p>
+
+                <div class="learn-grid">
+                    <div class="learn-card">
+                        <h3>Core Understanding</h3>
+                        <ul>
+                            <li>What AI really is — and what it isn't</li>
+                            <li>The major AI capabilities shaping work today</li>
+                            <li>Where automation saves time and money</li>
+                        </ul>
+                    </div>
+
+                    <div class="learn-card">
+                        <h3>Practical Capabilities</h3>
+                        <ul>
+                            <li>How AI understands text, images, and voice</li>
+                            <li>How workflows are built from simple tools</li>
+                            <li>Real-world applications in business</li>
+                        </ul>
+                    </div>
+
+                    <div class="learn-card">
+                        <h3>Value Creation</h3>
+                        <ul>
+                            <li>Freelance services you can offer</li>
+                            <li>Internal business tools</li>
+                            <li>Entry-level AI-assisted roles</li>
+                            <li>Side projects that solve real problems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    You won't just see what AI can do — you'll see where it becomes useful and valuable.
+                </div>
+            </div>
+        </section>
+
+        <!-- Earning Section -->
+        <section class="earning-section reveal">
+            <div class="container">
+                <h2 class="section-title">How People Are Earning with These Skills</h2>
+                <p class="section-intro">During the class, I'll show examples of how people are using AI to:</p>
+
+                <div class="earning-grid">
+                    <div class="earning-card">
+                        <h4>Service Offerings</h4>
+                        <p>Offer simple automation and AI-assisted services</p>
+                    </div>
+                    <div class="earning-card">
+                        <h4>Business Tools</h4>
+                        <p>Build tools for businesses without full engineering teams</p>
+                    </div>
+                    <div class="earning-card">
+                        <h4>Support Roles</h4>
+                        <p>Support content, admin, research, and operations roles</p>
+                    </div>
+                    <div class="earning-card">
+                        <h4>Paid Solutions</h4>
+                        <p>Create solutions businesses are willing to pay for</p>
+                    </div>
+                    <div class="earning-card">
+                        <h4>Career Advantage</h4>
+                        <p>Improve employability by working faster with AI</p>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <strong>You'll leave with:</strong><br><br>
+                    Clear ideas you can explore immediately • A realistic sense of what pays — and what doesn't • Direction on what to learn next based on your goals
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructor Section -->
+        <section class="instructor-section reveal">
+            <div class="container">
+                <h2 class="section-title">Who's Teaching This</h2>
+                
+                <div class="instructor">
+                    <div class="instructor-image-wrapper">
+                        <img src="assets/images/bernard.jpg" alt="Bernard Opara - AI Implementation Specialist" class="instructor-image">
+                    </div>
+                    <div class="instructor-bio">
+                        <h3>Hi, I'm Bernard Opara.</h3>
+                        <p>I didn't start as an AI engineer. I started curious — and intimidated.</p>
+                        <p>What changed everything was realizing that AI isn't reserved for experts alone. There's room for beginners who are willing to learn, build, and experiment.</p>
+                        <p>Since then, I've built:</p>
+                        <ul>
+                            <li>AI-powered document tools</li>
+                            <li>Automation workflows</li>
+                            <li>Custom AI systems for real business processes</li>
+                        </ul>
+                        <p>This class is me sharing the mental models, clarity, and lessons that helped me move from curiosity to real-world building.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Format Section -->
+        <section class="format-section reveal">
+            <div class="container">
+                <h2 class="section-title">How the Class Works</h2>
+
+                <div class="format-grid">
+                    <div class="format-item">
+                        <div class="format-icon">🌐</div>
+                        <h4>Live Online</h4>
+                        <p>Interactive sessions you can join from anywhere</p>
+                    </div>
+                    <div class="format-item">
+                        <div class="format-icon">📅</div>
+                        <h4>Two Saturdays</h4>
+                        <p>In February — dates announced soon</p>
+                    </div>
+                    <div class="format-item">
+                        <div class="format-icon">💡</div>
+                        <h4>Clear Explanations</h4>
+                        <p>No jargon, just practical insight</p>
+                    </div>
+                    <div class="format-item">
+                        <div class="format-icon">🔍</div>
+                        <h4>Real Examples</h4>
+                        <p>See how AI is being used in practice</p>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <strong>You'll leave with:</strong><br><br>
+                    Confidence around AI concepts • Practical understanding of use cases • A clearer earning direction • Less confusion about "what to learn next"
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing reveal" id="pricing">
+            <div class="container">
+                <h2 class="section-title">Investment</h2>
+                
+                <div class="price-box">
+                    <div class="price">₦10,000</div>
+                    <p class="price-note">One-time payment. No upsells during the class.<br>Just clarity, direction, and practical insight.</p>
+                    <a href="https://selar.com/4yu688861c" class="cta-button" target="_blank" rel="noopener">Join the Class</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Close -->
+        <section class="final-close reveal">
+            <div class="container-narrow">
+                <h2 class="section-title">Why This Matters</h2>
+                <p>AI is already changing how work gets done. Those who understand it move faster, work smarter, and earn more leverage.</p>
+                <p>This class helps you stop guessing — and start seeing where AI fits in your work, skills, and income goals.</p>
+                <a href="https://selar.com/4yu688861c" class="cta-button" target="_blank" rel="noopener">Reserve Your Spot — ₦10,000</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- AI Badge -->
+    <div class="ai-badge">Designed with AI</div>
+
+    <script>
+        // Particle Canvas Animation
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 240, 255, 0.5)';
+                ctx.fill();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((particle, i) => {
+                particle.update();
+                particle.draw();
+
+                // Connect particles
+                particles.slice(i + 1).forEach(otherParticle => {
+                    const dx = particle.x - otherParticle.x;
+                    const dy = particle.y - otherParticle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${0.2 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(otherParticle.x, otherParticle.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for orbs
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
